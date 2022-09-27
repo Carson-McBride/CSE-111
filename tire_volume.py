@@ -1,21 +1,8 @@
-"""
-
-
-v= pi * w^2 *a(w*a + 2540*d) / 10,000,000,000
-
-v is the volume in liters,
-π is the constant PI, which is the ratio of the circumference of a circle divided by its diameter (use math.pi),
-w is the width of the tire in millimeters,
-a is the aspect ratio of the tire, and
-d is the diameter of the wheel in inches.
-
-
-
-
-"""
+from datetime import datetime
 
 from math import pi
 
+current_date_and_time = datetime.now()
 
 volume = 0 
 width = float(input("\nEnter width of tire in mm: "))
@@ -25,4 +12,8 @@ diameter = float(input("Enter diameter of wheel in inches: "))
 
 volume = (pi * width ** 2 * aspectRatio * (width * aspectRatio + 2540 * diameter)) / 10000000000
 
-print (f'The approximate volume is {volume:.2f} liters')
+###print (f'The approximate volume is {volume:.2f} liters')
+
+with open("volumes.txt", mode="at") as volumes_file:
+    print(f"date: {current_date_and_time:%m-%d-%Y}, width: {width}, aspect ratio: {aspectRatio},\
+ diameter: {diameter}, volume: {volume:.2f}", sep=" ", end="\n", file=volumes_file)
