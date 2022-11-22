@@ -1,12 +1,12 @@
 import random
 
 def main():
-    print (f'{get_determiner(1)} {get_noun(1)} {get_verb(1, "past")}')
-    print (f'{get_determiner(1)} {get_noun(1)} {get_verb(1,"present")}')
-    print (f'{get_determiner(1)} {get_noun(1)} {get_verb(1,"future")}')
-    print (f'{get_determiner(2)} {get_noun(2)} {get_verb(2,"past")}')
-    print (f'{get_determiner(2)} {get_noun(2)} {get_verb(2,"present")}')
-    print (f'{get_determiner(2)} {get_noun(2)} {get_verb(2,"future")}')
+    print (f'{get_prepositional_phrase(1)} {get_determiner(1)} {get_noun(1)} {get_verb(1, "past")}')
+    print (f'{get_prepositional_phrase(1)} {get_determiner(1)} {get_noun(1)} {get_verb(1,"present")}')
+    print (f'{get_prepositional_phrase(1)} {get_determiner(1)} {get_noun(1)} {get_verb(1,"future")}')
+    print (f'{get_prepositional_phrase(2)} {get_determiner(2)} {get_noun(2)} {get_verb(2,"past")}')
+    print (f'{get_prepositional_phrase(2)} {get_determiner(2)} {get_noun(2)} {get_verb(2,"present")}')
+    print (f'{get_prepositional_phrase(2)} {get_determiner(2)} {get_noun(2)} {get_verb(2,"future")}')
     return 
 
 
@@ -50,4 +50,21 @@ def get_verb(quantity, tense):
     word = random.choice(words)
     return word
 
+def get_proposition():
+    words = ["about", "above", "across", "after", "along",
+        "around", "at", "before", "behind", "below",
+        "beyond", "by", "despite", "except", "for",
+        "from", "in", "into", "near", "of",
+        "off", "on", "onto", "out", "over",
+        "past", "to", "under", "with", "without"]
+    word = random.choice(words)
+    return word
+
+def get_prepositional_phrase(quantity):
+    determiner = get_determiner(quantity)
+    noun = get_noun(quantity)
+    proposition = get_proposition()
+
+    propositional_phrase = (f'{proposition} {determiner} {noun}')
+    return propositional_phrase 
 main()

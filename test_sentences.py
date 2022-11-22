@@ -1,4 +1,4 @@
-from sentences import get_determiner, get_noun, get_verb
+from sentences import get_determiner, get_noun, get_proposition, get_verb, get_prepositional_phrase
 import random
 import pytest
 
@@ -39,12 +39,12 @@ def test_get_determiner():
 def test_get_noun():
     single_nouns = ["bird", "boy", "car", "cat", "child",
         "dog", "girl", "man", "rabbit", "woman"]
-    for _ in range(4):
+    for _ in range(11):
         word = get_noun(1)
         assert word in single_nouns
     plural_nouns = ["birds", "boys", "cars", "cats", "children",
         "dogs", "girls", "men", "rabbits", "women"]
-    for _ in range(4):
+    for _ in range(11):
         word = get_noun(2)
         assert word in plural_nouns
     return
@@ -52,30 +52,54 @@ def test_get_verb():
 
     past_verbs = ["drank", "ate", "grew", "laughed", "thought",
         "ran", "slept", "talked", "walked", "wrote"]
-    for _ in range(4):
+    for _ in range(11):
         word = get_verb(1, "past")
         assert word in past_verbs
 
     present_single_verbs = ["drinks", "eats", "grows", "laughs", "thinks",
         "runs", "sleeps", "talks", "walks", "writes"]
-    for _ in range(4):
+    for _ in range(11):
         word = get_verb(1, "present")
         assert word in present_single_verbs
 
     present_plural_verbs = ["drink", "eat", "grow", "laugh", "think",
         "run", "sleep", "talk", "walk", "write"]
-    for _ in range(4):
+    for _ in range(11):
         word = get_verb(2, "present")
         assert word in present_plural_verbs
 
     future_verbs = ["will drink", "will eat", "will grow", "will laugh",
         "will think", "will run", "will sleep", "will talk",
         "will walk", "will write"]
-    for _ in range(4):
+    for _ in range(11):
         word = get_verb(2, "future")
         assert word in future_verbs
 
     return
+
+def test_get_proposition():
+
+    proposition = ["about", "above", "across", "after", "along",
+        "around", "at", "before", "behind", "below",
+        "beyond", "by", "despite", "except", "for",
+        "from", "in", "into", "near", "of",
+        "off", "on", "onto", "out", "over",
+        "past", "to", "under", "with", "without"]
+    for _ in range(31):
+        word = get_proposition()
+        assert word in proposition
+
+def test_get_propositional_phrase():
+    propositional_phrase = get_prepositional_phrase(1)
+    word = propositional_phrase.split(" ")
+    assert len(word) == 3
+
+    propositional_phrase = get_prepositional_phrase(2)
+    word = propositional_phrase.split(" ")
+    assert len(word) == 3
+
+    
+
 
 
 
